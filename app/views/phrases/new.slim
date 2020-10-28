@@ -1,0 +1,38 @@
+= form_for(@phrase) do |f|
+  - if @phrase.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@phrase.errors.count, "error")
+        | prohibited this phrase from being saved :
+      ul
+        - @phrase.errors.full_messages.each do |message|
+          li= message
+  h1 style=("color:green; margin-left:10%;")  Create Phrase
+  .form-group style="margin-left:10%;width:50%;"
+    = f.label :phrase
+    br/
+    = f.text_field :phrase, :class => 'form-control'
+
+  .form-group style=("margin-left:10%; width:50%;")
+    = f.label :translation
+    br/
+    = f.text_field :translation, :class => 'form-control'
+  br/
+
+  .form-group style=("margin-left:10%; width:50%;")
+    = f.label :category
+    br/
+    = f.select :category, Phrase::CATEGORIES, {}, { :class => 'form-control' }
+  br/
+
+  - if @phrase.id.nil?
+     = f.fields_for :examples do |example|
+       .form-group style=("margin-left:10%; width:50%;")
+         = example.label :example
+         br
+         = example.text_field :example, :class => 'form-control'
+         = example.hidden_field :user_id, :class => 'form-control'
+  br
+
+  .actions style="margin-left:10%;"
+    = f.submit 'Submit', :class => 'btn btn-primary'

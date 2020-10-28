@@ -1,0 +1,18 @@
+.container-fluid
+  .row
+    .col-md-12
+      h1 Username: #{@user.username}
+
+      h3 User Phrases
+      table.table
+        tr
+          th Ids
+          th Phrase
+          th Translation
+          th Category
+          - if @user == current_user
+           th Actions
+
+           th Votes
+           - @phrases.each do |phrase|
+              = render phrase, author: false

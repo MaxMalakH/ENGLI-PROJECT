@@ -1,0 +1,17 @@
+h1 Listing phrases
+table.table
+  tr
+    th Id
+    th Phrase
+    th Translation
+    th Category
+    th Author
+    th Votes
+
+    .text-center
+      = will_paginate @phrases, renderer: BootstrapPagination::Rails
+  - @phrases.each do |phrase|
+    = render phrase, author: true
+
+
+= link_to 'New phrase', new_phrase_path
