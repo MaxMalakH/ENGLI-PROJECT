@@ -7,7 +7,12 @@ header.navbar.navbar-inverse
         - if signed_in?
           li= link_to "Home", root_path
           li= link_to "Users", users_path
+
+          - if current_user.has_new_notifications?
+            span.glyphicon.glyphicon-heart.navigation-notification-item 'New'
+
           li= link_to "Notifications", notifications_index_path
+
           li= link_to "View Profile", user_path(current_user)
           li= link_to "Edit Profile", edit_user_registration_path
           li= link_to "Sign Out", destroy_user_session_path, method: "delete"
