@@ -5,10 +5,14 @@ class PhrasesController < ApplicationController
 
   def index
     @phrases = Phrase.paginate(page: params[:page], per_page: 10)
+
   end
 
   def vote
     shared_vote(@phrase)
+    # Try to send email
+    # @user = current_user
+
 
     redirect_to root_path
   end
@@ -35,6 +39,7 @@ class PhrasesController < ApplicationController
   end
 
   def create
+
     @phrase = current_user.phrases.new(phrase_params)
     if @phrase.save
       flash[:notice] = 'Phrase has been created!'

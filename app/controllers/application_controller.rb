@@ -6,11 +6,27 @@ class ApplicationController < ActionController::Base
   before_action :forbid_user_vote!, only: [:vote]
 
   def shared_vote(instance)
+
+    if instance.votes_for.size % 5 == 0
+      UserMailer.you_liked(instance.user.email).deliver
+    end
+
+
     if params[:vote] == 'up'
+
+    #  if (Если 5 раз лайк)
+
+    #  end
+
       instance.liked_by current_user
       flash[:notice] = 'You liked this!'
+
+      # checking if 5 times
+
+      #UserMailer.you_liked
     else
       instance.downvote_from current_user
+
       flash[:notice] = 'You disliked this!'
     end
 

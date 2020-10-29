@@ -21,7 +21,6 @@ class Phrase < ApplicationRecord
                 message: "%{value} is not a valid categoty"
             }
 
-
   enum category: %w(Actions Time Productivity Apologies)
 
 
