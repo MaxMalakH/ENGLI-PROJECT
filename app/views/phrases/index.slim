@@ -13,5 +13,5 @@ table.table
   - @phrases.each do |phrase|
     = render phrase, author: true
 
-
+= will_paginate @phrases, renderer: BootstrapPagination::Rails
 = link_to 'New phrase', new_phrase_path

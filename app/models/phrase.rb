@@ -5,7 +5,7 @@ class Phrase < ApplicationRecord
   include SharedMethods
   extend FriendlyId
   friendly_id :phrase, use: :slugged
-  self.per_page = 10
+  #self.per_page = 10
   CATEGORIES = [['Actions', 0], ['Time', 1], ['Productivity', 2], ['Apologies', 3], ['Common', 4]]
 
   belongs_to :user

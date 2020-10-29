@@ -4,7 +4,7 @@ class PhrasesController < ApplicationController
   before_action :check_user!, only: [:edit, :update, :destroy]
 
   def index
-    @phrases = Phrase.all.paginate(page: params[:page])
+    @phrases = Phrase.paginate(page: params[:page], per_page: 10)
   end
 
   def vote
