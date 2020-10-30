@@ -22,7 +22,7 @@
   .form-group style=("margin-left:10%; width:50%;")
     = f.label :category
     br/
-    = f.select :category, Phrase::CATEGORIES, {}, { :class => 'form-control' }
+    = f.select :category, ["actions", "time", "productivity", "apologies", "common"],{},:class => 'form-control'
   br/
 
   - if @phrase.id.nil?

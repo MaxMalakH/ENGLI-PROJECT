@@ -67,7 +67,7 @@ class PhrasesController < ApplicationController
 
 
   def phrase_params
-    params.require(:phrase).permit(:phrase, :translation, examples_attributes: [ :example, :user_id, :_destroy ])
+    params.require(:phrase).permit(:phrase, :translation, :category, examples_attributes: [ :example, :user_id, :_destroy ])
   end
   def set_phrase!
     @phrase = Phrase.friendly.find(params[:id])
